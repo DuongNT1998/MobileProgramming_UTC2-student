@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import '../screens/home_screen.dart';
 import '../controllers/counter_controller.dart';
+import '../utils/app_inherited_widget.dart';
+import '../views/screen_a.dart';
 
 class MyApp extends StatelessWidget {
+  MyApp({super.key});
+
+  final CounterController counterController = CounterController();
+
   @override
   Widget build(BuildContext context) {
-    return CounterController(
+    return AppInheritedWidget(
+      counterController: counterController,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'InheritedWidget Demo',
-        home: HomeScreen(),
+        home: const ScreenA(),
       ),
     );
   }

@@ -1,61 +1,17 @@
 import 'package:flutter/material.dart';
-import '../data/models/counter_model.dart';
-import '../data/repository/counter_repository.dart';
-import '../utils/app_constants.dart';
+import '../models/counter_model.dart';
 
-class CounterController extends StatefulWidget {
-  final Widget child;
+class CounterController extends ChangeNotifier {
+  CounterModel counterModel = CounterModel(value: 0);
 
-  CounterController({required this.child});
-
-  static _CounterControllerState of(BuildContext context) {
-    final _CounterInheritedWidget? inheritedWidget =
-    context.dependOnInheritedWidgetOfExactType<_CounterInheritedWidget>();
-
-    return inheritedWidget!.data;
+  int get counterValue {
+    return counterModel.value;
   }
 
-  @override
-  _CounterControllerState createState() {
-    return _CounterControllerState();
-  }
-}
+  void incrementCounter() {
+    counterModel.value = counterModel.value + 1;
 
-class _CounterControllerState extends State<CounterController> {
-  final CounterRepository _repository = CounterRepository();
-  CounterModel counter = CounterModel(value: 0);
-
-  void increment() {
-    setState(() {
-      counter.value = _repository.increment(counter.value);
-    });
-  }
-
-  void decrement() {
-    setState(() {
-      counter.value = _repository.decrement(counter.value);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _CounterInheritedWidget(
-      data: this,
-      child: widget.child,
-    );
-  }
-}
-
-class _CounterInheritedWidget extends InheritedWidget {
-  final _CounterControllerState data;
-
-  _CounterInheritedWidget({
-    required Widget child,
-    required this.data,
-  }) : super(child: child);
-
-  @override
-  bool updateShouldNotify(_CounterInheritedWidget oldWidget) {
-    return true;
+    // Thông báo cho UI biết dữ liệu đã thay đổi
+    notifyListeners();
   }
 }
