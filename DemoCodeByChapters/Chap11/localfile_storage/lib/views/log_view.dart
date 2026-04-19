@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/log_service.dart';
-import '../widgets/log_button.dart';
 
 class LogView extends StatefulWidget {
-
   @override
   State<LogView> createState() {
     return _LogViewState();
@@ -11,18 +9,15 @@ class LogView extends StatefulWidget {
 }
 
 class _LogViewState extends State<LogView> {
-
   String logContent = '';
 
   Future<void> addLog() async {
-
     await LogService.writeLog('User clicked ADD LOG button');
 
     await loadLogs();
   }
 
   Future<void> loadLogs() async {
-
     String logs = await LogService.readLogs();
 
     setState(() {
@@ -38,29 +33,19 @@ class _LogViewState extends State<LogView> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Local File Log Demo'),
-      ),
+      appBar: AppBar(title: Text('Local File Log Demo')),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-
-            LogButton(
-              title: 'Add Log',
-              onPressed: addLog,
-            ),
+            ElevatedButton(onPressed: addLog, child: Text('ADD LOG')),
 
             SizedBox(height: 20),
 
             Expanded(
               child: SingleChildScrollView(
-                child: Text(
-                  logContent,
-                  style: TextStyle(fontSize: 14),
-                ),
+                child: Text(logContent, style: TextStyle(fontSize: 14)),
               ),
             ),
           ],
