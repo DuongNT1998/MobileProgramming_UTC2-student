@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "362526751061",
+    "project_id": "projectmanagementfluttercli",
+    "storage_bucket": "projectmanagementfluttercli.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362526751061:android:aae0eb595f630b4718d7dc",
+        "android_client_info": {
+          "package_name": "com.example.cloud_firebase_storage_flutterfire_cli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaqabV5j5bT6XGSKgOW1bVGwVwGHAfGSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
